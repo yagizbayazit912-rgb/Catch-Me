@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "456546842280",
+    "project_id": "catch-me-d4f05",
+    "storage_bucket": "catch-me-d4f05.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456546842280:android:25c48328851ea43359f49d",
+        "android_client_info": {
+          "package_name": "com.example.catch_me"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi7-TjfvbQ_R5PcypXDn43ybeVlRO0d0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

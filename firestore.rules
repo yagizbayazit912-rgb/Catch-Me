@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function me(uid) { return signedIn() && request.auth.uid == uid; }
+
+    match /users/{uid} {
+      allow read: if me(uid);
+      // Profile creation, wallet changes and ownership counters are Admin
+      // writes from Callable Functions. The client only reads its profile.
+      allow create, update, delete: if false;
+
+      match /zonePresence/{zoneId} { allow read: if me(uid); allow write: if false; }
+      match /rentVisits/{zoneId} { allow read: if me(uid); allow write: if false; }
+    }
+
+    match /zones/{zoneId} {
+      allow read: if signedIn();
+      allow write: if false;
+    }
+    match /ledger/{entryId} {
+      allow read: if signedIn() && resource.data.fromUserId == request.auth.uid;
+      allow write: if false;
+    }
+  }
+}
